@@ -14,7 +14,7 @@ export default function Home() {
           commands. Experience the future of app development—no coding required!
         </p>
         <div className="space-x-4 flex justify-center flex-wrap">
-          <Link href="/demo-agent">
+          <Link href="/register">
             <button className="btn btn-hover px-6 py-3 text-lg">
               Let's Build Your App
             </button>
