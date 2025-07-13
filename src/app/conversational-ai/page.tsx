@@ -9,6 +9,7 @@ import {
   FaRobot,
   FaUser,
 } from "react-icons/fa";
+import { sendResponse } from "../../api/chatAPI";
 
 export default function ConversationalAI() {
   const [messages, setMessages] = useState([
@@ -68,6 +69,7 @@ export default function ConversationalAI() {
       recognitionRef.current?.start();
       setMessages((prev) => [...prev, { text: "Listening...", sender: "ai" }]);
     }
+    sendResponse(input);
     setIsListening(!isListening);
   };
 
