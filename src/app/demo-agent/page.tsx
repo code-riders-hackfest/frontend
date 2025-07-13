@@ -47,6 +47,36 @@ export default function DemoAgent() {
     setTheme(localStorage.getItem("theme") || "dark");
   }, []);
 
+  useEffect(() => {
+    if(input.trim().length > 0) {
+      setIsTyping(true);
+      // send API to /generate response
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ prompt: input }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          const reply: Message = {
+            text: data.reply || "Sorry, I didn't get that.",
+            sender: "ai",
+          };
+          setMessages((prev) => [...prev, reply]);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        })
+        .finally(() => {
+          setIsTyping(false);
+        });
+    } else {
+      setIsTyping(false);
+    }
+  }, [input])
+
   const handleSend = (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
