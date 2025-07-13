@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-gray-100/20 dark:bg-gray-800/20 backdrop-blur-sm bg-opacity-80 border border-gray-200/30 dark:border-gray-700/30 rounded-lg shadow-md;
+  }
+  .glass-hover {
+    @apply hover:bg-gray-200/30 dark:hover:bg-gray-700/30 transition-all duration-300;
+  }
+  .btn {
+    @apply px-6 py-2 font-medium rounded-lg border border-gray-300 dark:border-gray-600 text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-900 shadow-sm;
+  }
+  .btn-hover {
+    @apply hover:bg-gray-100 dark:hover:bg-gray-800 hover:shadow-md transition-all duration-300;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.chat-bubble {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.transition-all {
+  transition: all 0.3s ease;
+}
